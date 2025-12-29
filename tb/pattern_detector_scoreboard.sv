@@ -2,6 +2,10 @@
 // Receives transactions from both input and output monitors
 // Compares DUT output with reference model prediction
 
+// Declare unique analysis implementations for input/output streams
+`uvm_analysis_imp_decl(_in)
+`uvm_analysis_imp_decl(_out)
+
 class pattern_detector_scoreboard extends uvm_scoreboard;
     
     `uvm_component_utils(pattern_detector_scoreboard)

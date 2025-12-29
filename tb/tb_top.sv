@@ -1,11 +1,12 @@
 // Pattern Detector Testbench Top Module
+// Pattern Detector Testbench Top Module
 // Instantiates DUT, interface, generates clock, and runs UVM test
 
 module tb_top;
     
     import uvm_pkg::*;
+    import pattern_detector_pkg::*;
     `include "uvm_macros.svh"
-    
     // Clock generation
     logic clk;
     initial begin
@@ -40,7 +41,7 @@ module tb_top;
         run_test();
     end
     
-    // Timeout watchdog
+    // Timeout watchdog (optional)
     initial begin
         #1ms;
         `uvm_fatal("TIMEOUT", "Test timed out after 1ms")

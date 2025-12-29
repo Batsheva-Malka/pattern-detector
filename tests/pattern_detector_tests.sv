@@ -279,3 +279,87 @@ class random_test extends pattern_detector_base_test;
     endtask
     
 endclass
+// Test Suite - Runs all tests sequentially
+class all_tests_suite extends pattern_detector_base_test;
+    
+    `uvm_component_utils(all_tests_suite)
+    
+    function new(string name = "all_tests_suite", uvm_component parent = null);
+        super.new(name, parent);
+    endfunction
+    
+    virtual task run_phase(uvm_phase phase);
+        basic_match_seq          seq1;
+        no_match_seq             seq2;
+        first_window_match_seq   seq3;
+        last_window_match_seq    seq4;
+        multiple_matches_seq     seq5;
+        full_mask_seq            seq6;
+        zero_mask_seq            seq7;
+        reset_test_seq           seq8;
+        random_seq               seq9;
+        
+        super.run_phase(phase);
+        
+        phase.raise_objection(this);
+        
+        // Test 1: Basic Match
+        `uvm_info(get_type_name(), "\n========== Running: basic_match_test ==========", UVM_LOW)
+        seq1 = basic_match_seq::type_id::create("seq1");
+        seq1.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 2: No Match
+        `uvm_info(get_type_name(), "\n========== Running: no_match_test ==========", UVM_LOW)
+        seq2 = no_match_seq::type_id::create("seq2");
+        seq2.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 3: First Window Match
+        `uvm_info(get_type_name(), "\n========== Running: first_window_match_test ==========", UVM_LOW)
+        seq3 = first_window_match_seq::type_id::create("seq3");
+        seq3.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 4: Last Window Match
+        `uvm_info(get_type_name(), "\n========== Running: last_window_match_test ==========", UVM_LOW)
+        seq4 = last_window_match_seq::type_id::create("seq4");
+        seq4.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 5: Multiple Matches
+        `uvm_info(get_type_name(), "\n========== Running: multiple_matches_test ==========", UVM_LOW)
+        seq5 = multiple_matches_seq::type_id::create("seq5");
+        seq5.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 6: Full Mask
+        `uvm_info(get_type_name(), "\n========== Running: full_mask_test ==========", UVM_LOW)
+        seq6 = full_mask_seq::type_id::create("seq6");
+        seq6.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 7: Zero Mask
+        `uvm_info(get_type_name(), "\n========== Running: zero_mask_test ==========", UVM_LOW)
+        seq7 = zero_mask_seq::type_id::create("seq7");
+        seq7.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 8: Reset Test
+        `uvm_info(get_type_name(), "\n========== Running: reset_test ==========", UVM_LOW)
+        seq8 = reset_test_seq::type_id::create("seq8");
+        seq8.start(env.agent.sequencer);
+        #100ns;
+        
+        // Test 9: Random Test
+        `uvm_info(get_type_name(), "\n========== Running: random_test ==========", UVM_LOW)
+        seq9 = random_seq::type_id::create("seq9");
+        seq9.start(env.agent.sequencer);
+        #500ns;
+        
+        `uvm_info(get_type_name(), "\n========== ALL TESTS COMPLETED ==========", UVM_LOW)
+        
+        phase.drop_objection(this);
+    endtask
+    
+endclass

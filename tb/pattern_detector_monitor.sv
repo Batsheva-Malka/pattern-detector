@@ -34,6 +34,14 @@ class pattern_detector_monitor extends uvm_monitor;
     
     // Run phase - collect transactions based on monitor type
     virtual task run_phase(uvm_phase phase);
+        // Wait for reset to complete
+        @(posedge vif.rst_n);
+        repeat(2) @(vif.monitor_cb);
+        
+        // Output monitor waits one extra cycle (DUT has 1-cycle latency)
+        if (monitor_type == "OUTPUT")
+            @(vif.monitor_cb);
+        
         forever begin
             @(vif.monitor_cb);
             
