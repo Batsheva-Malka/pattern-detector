@@ -17,6 +17,6 @@ package pattern_detector_pkg;
     `include "pattern_detector_config.sv"
     `include "pattern_detector_env.sv"
     `include "pattern_detector_sequences.sv"
-    `include "../tests/pattern_detector_tests.sv"
+    `include "pattern_detector_tests.sv"
     
 endpackage

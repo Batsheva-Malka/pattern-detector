@@ -32,7 +32,9 @@ class pattern_detector_env extends uvm_env;
         agent.item_collected_port_out.connect(scoreboard.item_collected_export_out);
         
         // Connect output monitor to coverage collector
-        agent.item_collected_port_out.connect(coverage.analysis_export);
+           //agent.item_collected_port_out.connect(coverage.analysis_export);
+
+      agent.item_collected_port_in.connect(coverage.analysis_export);
     endfunction
     
 endclass

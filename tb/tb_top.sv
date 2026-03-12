@@ -1,5 +1,4 @@
 // Pattern Detector Testbench Top Module
-// Pattern Detector Testbench Top Module
 // Instantiates DUT, interface, generates clock, and runs UVM test
 
 module tb_top;

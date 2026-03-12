@@ -54,6 +54,7 @@ class pattern_detector_monitor extends uvm_monitor;
                 trans_collected.data_stream_b = vif.monitor_cb.data_stream_b;
                 trans_collected.mode_select   = vif.monitor_cb.mode_select;
                 trans_collected.pattern_mask  = vif.monitor_cb.pattern_mask;
+                trans_collected.pattern_match = vif.monitor_cb.pattern_match;
                 
                 `uvm_info(get_type_name(), $sformatf("MonitorIn: mode=%0d, stream_a=0x%0h, stream_b=0x%0h, mask=0x%0h",
                           trans_collected.mode_select, trans_collected.data_stream_a, 
